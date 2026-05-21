@@ -1,0 +1,347 @@
+:root {
+    --bg-color: #f7f9f6;      /* Off-white with a hint of green */
+    --text-main: #2d382e;     /* Deep forest grey-green */
+    --accent-pink: #f3d1d6;   /* Soft cherry blossom pink */
+    --accent-green: #cbdacb;  /* Pale sage green */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+}
+
+#nature-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* Allows clicking through to text/links */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+    z-index: 10;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    margin-left: 2rem;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #e2a4ae; /* Turns deeper pink on hover */
+}
+
+.hero {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 10%; /* Uses percentages so it scales beautifully on ultra-wide or laptop screens */
+    max-width: 1000px;
+}
+
+.hero-welcome {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #745358; /* Muted dusty rose tint */
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.hero h1 {
+    font-size: 4rem; /* Makes your name the bold centerpiece */
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+    color: var(--text-main);
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #5c6e5e; /* Elegant forest sage green tint */
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 550px; /* Keeps the text line length easy to read */
+    color: rgba(45, 56, 46, 0.8);
+}
+
+.highlight {
+    position: relative;
+    color: var(--text-main);
+    font-weight: 400;
+    border-bottom: none; /* Removing the old harsh bottom border line */
+}
+
+/* A more modern accent marker: a soft, subtle highlighter brush effect behind the word 'Developer' */
+.highlight::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background-color: rgba(243, 209, 214, 0.6); /* Soft blossom pink highlight background tint */
+    z-index: -1;
+    transform: rotate(-0.5deg);
+}
+
+/* Clean adjustments for small mobile phone screens */
+@media (max-width: 768px) {
+    .hero {
+        padding: 0 2rem;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+}
+
+/* Enable smooth scrolling between sections */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.content-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+    position: relative;
+    z-index: 5; /* Keeps text above canvas */
+}
+
+.section-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: var(--text-main);
+}
+
+.content-section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+/* Project Layout */
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(203, 218, 203, 0.3);
+    backdrop-filter: blur(5px); /* Soft glassmorphism effect */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-pink);
+}
+
+.project-card h3 {
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+/* Email Button */
+.email-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.email-btn:hover {
+    background-color: var(--accent-pink);
+    border-color: var(--accent-pink);
+}
+
+/* About Section Grid Layout */
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* 1 part image, 1.5 parts text */
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Image styling */
+.about-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%; /* Cuts your PNG into a perfect, soft circle */
+    background: linear-gradient(135deg, rgba(243, 209, 214, 0.4), rgba(203, 218, 203, 0.4)); /* Soft pink-to-green glow behind your transparent PNG */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(74, 83, 75, 0.05); /* Very light organic shadow */
+    transition: transform 0.5s ease;
+}
+
+/* Subtle interactive animation on hover */
+.profile-img:hover {
+    transform: scale(1.03) rotate(1deg);
+}
+
+/* Responsive adjustment for phones or narrow screens */
+@media (max-width: 768px) {
+    .about-layout {
+        grid-template-columns: 1fr; /* Stack vertically if screen is small */
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .profile-img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Hero Tech Stack Tray Styling */
+.hero-tech-tray {
+    display: flex;
+    flex-wrap: wrap; /* Ensures tags wrap nicely onto a second line on small phone screens */
+    gap: 0.8rem;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 6; /* Keeps the tags cleanly clickable and interactive above the canvas */
+}
+
+.hero-tech-tray span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    
+    /* Using your theme's soft sage greens */
+    color: #4a544b; 
+    background: rgba(203, 218, 203, 0.35); 
+    
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(203, 218, 203, 0.6);
+    backdrop-filter: blur(4px); /* Slight background blur underneath the pill */
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* Subtle interactive hover accent effect */
+.hero-tech-tray span:hover {
+    background: rgba(243, 209, 214, 0.5); /* Shifts gently to blossom pink on hover */
+    border-color: rgba(243, 209, 214, 0.8);
+    transform: translateY(-2px);
+}
+
+/* The Styled Status Pill-Badge */
+.organic-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 2rem; /* Creates perfect breathing room before "Welcome, I am" */
+    
+    /* Elegant frosted glass effect */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* Delicate natural borders and curves */
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    border: 1px solid rgba(203, 218, 203, 0.6);
+    box-shadow: 0 4px 15px rgba(74, 83, 75, 0.03);
+    width: fit-content;
+    
+    /* Smooth hover lift */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+}
+
+.organic-status-badge:hover {
+    transform: translateY(-1px);
+    border-color: rgba(243, 209, 214, 0.8); /* Glows soft pink on hover */
+}
+
+/* Beautiful Typographic Styling */
+.organic-status-badge p {
+    font-size: 0.75rem;
+    text-transform: uppercase; /* Uppercase instantly gives it a high-end, branded look */
+    letter-spacing: 1.5px;     /* Spaced lettering makes it look intentional and clean */
+    font-weight: 500;
+    color: #5c6e5e;            /* Styled in your palette's elegant sage green */
+    margin: 0;
+    line-height: 1;
+}
+
+/* A sleek, breathing blossom-pink core dot */
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #e8b4bc; /* Soft cherry blossom pink core */
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(243, 209, 214, 0.8);
+    animation: blossomPulse 3s infinite ease-in-out;
+}
+
+/* A smooth, gentle pulsing animation */
+@keyframes blossomPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(243, 209, 214, 0.7); }
+    50% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(243, 209, 214, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(243, 209, 214, 0); }
+}
