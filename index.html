@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- The canvas handles our organic aesthetic -->
     <canvas id="nature-canvas"></canvas>
 
     <nav class="navbar">
@@ -19,75 +18,96 @@
         </div>
     </nav>
     
+    <div class="scroll-container">
 
-<main id="hero" class="hero">    <!-- The Restyled Top Badge -->
-    <div class="organic-status-badge">
-        <span class="pulse-dot"></span>
-        <p>Open for opportunities & internships</p>
-    </div>
-    
-    <p class="hero-welcome">Welcome, I am</p>
-    <h1>Weah Joy Jacinto</h1>
-    <h2 class="hero-subtitle">
-        Computer Science Student & <span class="highlight">Software Developer</span>
-    </h2>
-    <p class="hero-description">
-        Crafting high-performance mobile applications and clean, reliable backend infrastructure.
-    </p>
-
-    <div class="hero-tech-tray">
-        <span>Flutter</span>
-        <span>Dart</span>
-        <span>Java</span>
-        <span>Firebase</span>
-        <span>Git</span>
-    </div>
-</main>
-    
-    <!-- ABOUT SECTION -->
-<section id="about" class="content-section">
-    <div class="section-container about-layout">
-        
-        <!-- Profile Image Wrapper -->
-        <div class="about-image-wrapper">
-            <img src="me1-removebg-preview.png" alt="Your Name" class="profile-img">
-        </div>
-        
-        <!-- Text Column -->
-        <div class="about-text">
-            <h2>About Me</h2>
-            <p>I am a software developer focused on crafting beautiful, highly functional digital experiences. Deeply inspired by organic systems, clean architecture, and minimalistic design frameworks.</p>
-        </div>
-
-    </div>
-</section>
-
-<!-- WORK/PROJECTS SECTION -->
-<section id="work" class="content-section">
-    <div class="section-container">
-        <h2>Selected Work</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>LocalLens App</h3>
-                <p>A mobile application exploring regional photography and community discovery. Built using Flutter and Firebase.</p>
+        <main id="hero" class="portfolio-section hero">
+            <div class="organic-status-badge">
+                <span class="pulse-dot"></span>
+                <p>Open for opportunities & internships</p>
             </div>
-            <div class="project-card">
-                <h3>AeroTransit Backend</h3>
-                <p>An airline ticketing infrastructure handling real-time reservation logic and high-throughput databases.</p>
-            </div>
-        </div>
-    </div>
-</section>
+            
+            <p class="hero-welcome">Welcome, I am</p>
+            <h1>Weah Joy Jacinto</h1>
+            <h2 class="hero-subtitle">
+                Computer Science Student & <span class="highlight">Software Developer</span>
+            </h2>
+            <p class="hero-description">
+                Crafting high-performance mobile applications and clean, reliable backend infrastructure.
+            </p>
 
-<!-- CONTACT SECTION -->
-<section id="contact" class="content-section">
+            <div class="hero-tech-tray">
+                <span>Flutter</span>
+                <span>Dart</span>
+                <span>Java</span>
+                <span>Firebase</span>
+                <span>Git</span>
+            </div>
+        </main>
+            
+        <section id="about" class="portfolio-section content-section">
+            <div class="section-container about-layout">
+                <div class="about-image-wrapper">
+                    <img src="me1-removebg-preview.png" alt="Weah Joy Jacinto" class="profile-img">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I am a software developer focused on crafting beautiful, highly functional digital experiences. Deeply inspired by organic systems, clean architecture, and minimalistic design frameworks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="portfolio-section content-section">
+            <div class="section-container">
+                <h2>Selected Work</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>Airlines Ticketing</h3>
+                        <p>A mobile-web application for booking airline tickets with gps tracker for luggages.</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>Artiselle</h3>
+                        <p>A web application for niche products and services, focuses mainly on users interface.</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>Local Lens</h3>
+                        <p>A mobile application for posting images with real-time updates. Built using Flutter and Firebase. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      <section id="contact" class="portfolio-section content-section">
     <div class="section-container">
         <h2>Let's Connect</h2>
-        <p>Whether you want to discuss a new project, continuous integration pipelines, or just talk about clean UI design, feel free to drop a line.</p>
-        <a href="mailto:your.email@example.com" class="email-btn">Reach Out</a>
+        <p class="contact-intro">Whether you want to discuss a new project, continuous integration pipelines, or just talk about clean UI design, feel free to drop a line.</p>
+        
+        <div class="contact-grid">
+            <div class="contact-links-column">
+                <h3>Find Me Online</h3>
+                <a href="https://github.com/JillianeMorie" target="_blank" class="social-link">GitHub ↗</a>
+                <a href="https://www.instagram.com/smiley_yangjacinto/" target="_blank" class="social-link">Instagram ↗</a>
+                <a href="https://www.facebook.com/weahjoy.jacinto" target="_blank" class="social-link">Facebook ↗</a>
+                <a href="https://www.facebook.com/profile.php?id=61582251975798" target="_blank" class="social-link">Official Facebook Page ↗</a>
+            </div>
+            
+            <div class="contact-links-column">
+                <h3>Direct Lines</h3>
+                <a href="mailto:joylydiajacinto@gmail.com" class="direct-link">joylydiajacinto@gmail.com</a>
+                <a href="tel:+639287059357" class="direct-link">+63 928 705 9357</a>
+                
+                <div class="cv-wrapper">
+                    <a href="jacintocv.pdf" download="Weah_Joy_Jacinto_CV.pdf" class="cv-btn">
+                         <span>Download CV</span>
+                        <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-    <script src="app.js"></script>
+    </div> <script src="app.js"></script>
 </body>
 </html>

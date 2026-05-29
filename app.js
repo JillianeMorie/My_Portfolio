@@ -129,6 +129,9 @@ plantTree(window.innerWidth * 0.85, window.innerHeight, -Math.PI / 2, 90, 5);
 
 // Plant structural branches towards user mouse click target points
 window.addEventListener('click', (e) => {
+    // Safety check to ensure clicking navbar items doesn't sprout an accidental tree trunk underneath it
+    if (e.target.closest('.navbar')) return;
+
     const startX = e.clientX + (Math.random() * 40 - 20);
     const startY = window.innerHeight;
     const angle = Math.atan2(e.clientY - startY, e.clientX - startX);
@@ -197,7 +200,7 @@ window.addEventListener('mousemove', (e) => {
 
 
 // ==========================================
-// 3. MAIN RENDER LOOP (WITH GARBAGE COLLECTION)
+// 3. MAIN RENDER LOOP & MANUAL NAVIGATION LINKING
 // ==========================================
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -220,46 +223,26 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
+// Handle smooth link navigation clicks inside your CSS .scroll-container framework
 window.addEventListener('load', () => {
-    let isInterrupted = false;
+    const scrollContainer = document.querySelector('.scroll-container');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-    // Detect if the user tries to scroll up or down manually
-    const interruptCheck = () => {
-        isInterrupted = true;
-        // Clean up listeners immediately once interrupted so we aren't wasting performance
-        window.removeEventListener('wheel', interruptCheck);
-        window.removeEventListener('touchmove', interruptCheck);
-        window.removeEventListener('keydown', interruptCheck);
-    };
-
-    // Listen for any manual mouse wheels, mobile swipes, or keyboard hits
-    window.addEventListener('wheel', interruptCheck);
-    window.addEventListener('touchmove', interruptCheck);
-    window.addEventListener('keydown', interruptCheck);
-
-    // 1. Wait 3.5 seconds on the landing page
-    setTimeout(() => {
-        // If the user hasn't touched anything, glide to About
-        if (!isInterrupted) {
-            const aboutSection = document.getElementById('about');
-            if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection && scrollContainer) {
+                scrollContainer.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
             }
-
-            // 2. Wait another 4.5 seconds on the About page
-            setTimeout(() => {
-                // Double check they still haven't manually scrolled away before moving to Work
-                if (!isInterrupted) {
-                    const workSection = document.getElementById('work');
-                    if (workSection) {
-                        workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                    // Clean up after natural completion
-                    interruptCheck();
-                }
-            }, 4500);
-        }
-    }, 3500);
+        });
+    });
 });
 
 animate();
